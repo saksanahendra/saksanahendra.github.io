@@ -401,10 +401,21 @@
             }
         }
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const to = urlParams.get('to');
-        if(to) document.getElementById('guest-target').innerText = to;
+        // Mengambil nama dari link secara otomatis
+const urlParams = new URLSearchParams(window.location.search);
+const to = urlParams.get('to');
+
+if (to) {
+    // Menghapus tanda plus (+) atau %20 dan mengubahnya jadi spasi rapi
+    const namaRapi = decodeURIComponent(to).replace(/[+]/g, ' ');
+    
+    // Memasukkan nama ke id "guest-target" tanpa merubah CSS
+    const elemenNama = document.getElementById('guest-target');
+    if (elemenNama) {
+        elemenNama.innerText = namaRapi;
+    }
+}
+
     </script>
 </body>
 </html>
-
